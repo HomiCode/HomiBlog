@@ -61,7 +61,6 @@ def post_list(request, tag_slug=None):
 
 
 def post_share(request, post_id):
-    # Retrieve post by id
     post = get_object_or_404(Post, id=post_id,
                              status=Post.Status.PUBLISHED)
     sent = False
@@ -83,7 +82,7 @@ def post_share(request, post_id):
                                                     'sent': sent})
 
 
-@ require_POST
+@require_POST
 def post_comment(request, post_id):
     post = get_object_or_404(Post, id=post_id, status=Post.Status.PUBLISHED)
     comment = None
